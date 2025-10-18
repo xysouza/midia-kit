@@ -1,26 +1,36 @@
-import { extendTheme } from '@chakra-ui/react'
-import type { ThemeConfig } from '@chakra-ui/react'
+import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
 
 const config: ThemeConfig = {
   initialColorMode: 'system',
   useSystemColorMode: true,
 }
 
+// Custom palette from art direction
 const colors = {
-  brand: {
-    50: '#eef2ff',
-    100: '#e0e7ff',
-    200: '#c7d2fe',
-    300: '#a5b4fc',
-    400: '#818cf8',
-    500: '#6366f1',
-    600: '#4f46e5',
-    700: '#4338ca',
-    800: '#3730a3',
-    900: '#312e81',
+  palette: {
+    lightBg: '#EEE4DB', // Fundo principal/claro
+    darkBg: '#1C1412', // Fundo escuro (escolhido para combinar com a paleta)
+    card1: '#E6D0CA', // Tons de transição/cards
+    card2: '#D8AE9C',
+    accent: '#CE9C90', // Destaques/texto principal
+    accent2: '#A6776A',
   },
 }
 
-export const theme = extendTheme({ config, colors })
+export const theme = extendTheme({
+  config,
+  colors,
+  styles: {
+    global: (props: { colorMode: 'light' | 'dark' }) => ({
+      'html, body, #root': {
+        height: '100%'
+      },
+      body: {
+        bg: props.colorMode === 'light' ? 'palette.lightBg' : 'palette.darkBg',
+        color: props.colorMode === 'light' ? '#2D2422' : 'whiteAlpha.900',
+      },
+    }),
+  },
+})
 
 export default theme
