@@ -114,7 +114,12 @@ const Nav = () => {
   const navBg = useColorModeValue('rgba(238, 228, 219, 0.7)', 'rgba(28, 20, 18, 0.8)');
   const borderColor = useColorModeValue('rgba(0,0,0,0.08)', 'rgba(255,255,255,0.08)');
   const hoverBg = useColorModeValue('rgba(166, 119, 106, 0.10)', 'rgba(206, 156, 144, 0.10)');
-  const drawerBg = useColorModeValue('rgba(255,255,255,0.96)', 'rgba(2, 12, 20, 0.96)');
+  const drawerBg = useColorModeValue('rgba(243, 233, 222, 0.96)', 'rgba(16, 12, 11, 0.95)');
+  const drawerBgGradient = useColorModeValue(
+    'linear-gradient(180deg, rgba(230, 208, 202, 0.9) 0%, rgba(238, 228, 219, 0.95) 40%, rgba(238, 228, 219, 0.92) 100%)',
+    'linear-gradient(180deg, rgba(21, 16, 14, 0.95) 0%, rgba(16, 12, 11, 0.95) 50%, rgba(26, 20, 18, 0.92) 100%)'
+  );
+  const drawerBorderColor = useColorModeValue('rgba(166,119,106,0.35)', 'rgba(206,156,144,0.18)');
   const headerTextColor = useColorModeValue('#2D2422', 'white');
   const iconColor = useColorModeValue('#2D2422', 'white');
   const btnTextColor = useColorModeValue('#2D2422', '#021015');
@@ -123,7 +128,7 @@ const Nav = () => {
   const boxShadowHover = useColorModeValue('0 28px 65px rgba(166,119,106,0.35)', '0 28px 65px rgba(206,156,144,0.35)');
   const btnShadowStrong = useColorModeValue('0 24px 55px rgba(166,119,106,0.30)', '0 24px 55px rgba(206,156,144,0.30)');
   const drawerLinkColor = useColorModeValue('#2D2422', 'whiteAlpha.900');
-  const drawerLinkBg = useColorModeValue('rgba(230, 208, 202, 0.6)', 'rgba(6,14,22,0.86)');
+  const drawerLinkBg = useColorModeValue('rgba(230, 208, 202, 0.6)', 'rgba(40, 24, 22, 0.82)');
   const drawerLinkHoverBorder = useColorModeValue('rgba(166,119,106,0.35)', 'rgba(206,156,144,0.35)');
 
   const linkStyles = {
@@ -158,7 +163,7 @@ const Nav = () => {
       top="0"
       zIndex="banner"
       backdropFilter="blur(18px) saturate(160%)"
-  bg={navBgWithScroll}
+    bg={navBgWithScroll}
       borderBottom={`1px solid ${borderColor}`}
       boxShadow={shadow}
       transition="background-color .35s ease, box-shadow .35s ease, border-color .35s ease"
@@ -280,13 +285,17 @@ const Nav = () => {
           />
           <DrawerContent
             bg={drawerBg}
-            color={useColorModeValue('#2D2422', 'white')}
+            bgGradient={drawerBgGradient}
+            color={useColorModeValue('#2D2422', 'whiteAlpha.900')}
             borderRadius={{ base: '2xl', sm: '3xl' }}
             mx={{ base: '4', sm: '8' }}
             my={{ base: '5', sm: '8' }}
             borderWidth="1px"
-            borderColor={borderColor}
-            boxShadow="0 24px 60px rgba(1, 5, 9, 0.65)"
+            borderColor={drawerBorderColor}
+            boxShadow={useColorModeValue(
+              '0 28px 45px rgba(166,119,106,0.25)',
+              '0 28px 55px rgba(10, 6, 5, 0.75)'
+            )}
             css={{
               animation: isOpen
                 ? `${slideInRight} 0.4s cubic-bezier(0.16, 1, 0.3, 1)`
@@ -296,7 +305,7 @@ const Nav = () => {
             <DrawerCloseButton _hover={{ bg: hoverBg }} />
             <DrawerHeader
               borderBottomWidth="1px"
-              borderColor={borderColor}
+              borderColor={drawerBorderColor}
               px={{ base: 5, sm: 6 }}
               py={{ base: 4, sm: 5 }}
             >
@@ -309,8 +318,20 @@ const Nav = () => {
               px={{ base: 5, sm: 6 }}
               py={{ base: 6, sm: 7 }}
             >
-              <HStack justify="space-between" align="center" mb={2}>
-                <Text fontWeight="medium">Tema</Text>
+              <HStack
+                justify="space-between"
+                align="center"
+                mb={2}
+                px={3}
+                py={2}
+                borderRadius="lg"
+                bg={useColorModeValue('rgba(230, 208, 202, 0.55)', 'rgba(40, 30, 28, 0.75)')}
+                borderWidth="1px"
+                borderColor={drawerBorderColor}
+              >
+                <Text fontWeight="medium" color={drawerLinkColor}>
+                  Tema
+                </Text>
                 <IconButton
                   aria-label={isLight ? 'Ativar modo escuro' : 'Desativar modo escuro'}
                   onClick={toggleColorMode}
@@ -334,7 +355,7 @@ const Nav = () => {
                     borderRadius="full"
                     transition="all 0.2s ease"
                     borderWidth="1px"
-                    borderColor={borderColor}
+                    borderColor={drawerBorderColor}
                     bg={drawerLinkBg}
                     css={{
                       animation: isOpen
@@ -363,7 +384,7 @@ const Nav = () => {
               <Box
                 h="1px"
                 w="full"
-                bg="rgba(255,255,255,0.05)"
+                bg={useColorModeValue('rgba(166,119,106,0.25)', 'rgba(206,156,144,0.15)')}
                 borderRadius="full"
                 css={{
                   animation: isOpen

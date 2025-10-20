@@ -5,7 +5,7 @@ import { Footer } from '../components/Footer'
 
 export function MainLayout({ children }: PropsWithChildren) {
   return (
-    <Box minH="100%" display="flex" flexDirection="column">
+  <Box minH="100vh" display="flex" flexDirection="column">
       {/* New sticky navigation */}
       <Nav />
       {/* Keep the previous header utilities if needed below nav (e.g., theme toggle) */}
