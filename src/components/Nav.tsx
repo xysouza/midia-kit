@@ -134,6 +134,8 @@ const Nav = () => {
   const linkStyles = {
     position: 'relative',
     fontWeight: 'medium',
+    fontSize: 'sm',
+    letterSpacing: '0.04em',
     color: textMuted,
     textDecoration: 'none',
     transition: 'all 0.2s ease',
@@ -190,12 +192,7 @@ const Nav = () => {
         maxW="7xl"
         mx="auto"
       >
-        <Heading
-          size="md"
-          color={headerTextColor}
-          letterSpacing="tight"
-          fontFamily="'JetBrains Mono', monospace"
-        >
+        <Heading size="md" color={headerTextColor} letterSpacing="tight">
           Midia Kit
         </Heading>
 
@@ -347,9 +344,10 @@ const Nav = () => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    fontSize="lg"
+                    fontSize="md"
                     color={drawerLinkColor}
                     fontWeight="medium"
+                    letterSpacing="0.05em"
                     px="5"
                     py="3"
                     borderRadius="full"

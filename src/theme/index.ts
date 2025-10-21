@@ -17,9 +17,65 @@ const colors = {
   },
 }
 
+const fonts = {
+  heading: `'Poppins', 'Inter Variable', sans-serif`,
+  body: `'Inter Variable', 'Inter', sans-serif`,
+}
+
+const textStyles = {
+  eyebrow: {
+    fontSize: 'sm',
+    letterSpacing: '0.28em',
+    textTransform: 'uppercase',
+    fontWeight: 600,
+  },
+  subtitle: {
+    fontSize: { base: 'md', md: 'lg' },
+    fontStyle: 'italic',
+    fontWeight: 500,
+  },
+  body: {
+    fontSize: 'md',
+    lineHeight: 'tall',
+    fontWeight: 400,
+  },
+}
+
+const components = {
+  Heading: {
+    baseStyle: {
+      fontWeight: 700,
+      letterSpacing: '-0.015em',
+    },
+  },
+  Text: {
+    baseStyle: {
+      letterSpacing: '-0.005em',
+    },
+  },
+  Button: {
+    baseStyle: {
+      borderRadius: 'full',
+      fontWeight: 600,
+      letterSpacing: '0.02em',
+    },
+  },
+  Link: {
+    baseStyle: {
+      fontWeight: 500,
+      _hover: {
+        textDecoration: 'none',
+      },
+    },
+  },
+}
+
 export const theme = extendTheme({
   config,
   colors,
+  fonts,
+  textStyles,
+  components,
   styles: {
     global: (props: { colorMode: 'light' | 'dark' }) => ({
       'html, body, #root': {

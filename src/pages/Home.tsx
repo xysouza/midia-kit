@@ -14,18 +14,32 @@ import {
   Icon,
 } from '@chakra-ui/react'
 import { FaInstagram } from 'react-icons/fa'
+import { FiUsers, FiDollarSign, FiTrendingUp } from 'react-icons/fi'
+import bubbleLaundryLogo from '../assets/img/bubble_laundry.jpg'
+import landimFolheadosLogo from '../assets/img/landim_folheados.jpg'
+import narcisoEnxovaisLogo from '../assets/img/narciso_enxovais.jpg'
+import oticasDinizLogo from '../assets/img/oticas_diniz.png'
 
 export default function Home() {
   const accent = useColorModeValue('#A6776A', '#CE9C90')
   const primaryText = useColorModeValue('#2D2422', 'whiteAlpha.900')
   const secondaryText = useColorModeValue('rgba(45, 36, 34, 0.72)', 'rgba(255,255,255,0.72)')
-  const brandChipBg = useColorModeValue('rgba(206, 156, 144, 0.22)', 'rgba(166,119,106,0.12)')
-  const brandChipBorder = useColorModeValue('rgba(166,119,106,0.35)', 'rgba(206,156,144,0.24)')
   const primaryButtonText = useColorModeValue('#2D2422', '#021015')
   const imageBorder = useColorModeValue('rgba(206,156,144,0.4)', 'rgba(206,156,144,0.3)')
   const imageShadow = useColorModeValue('0 25px 55px rgba(166,119,106,0.28)', '0 22px 45px rgba(0,0,0,0.55)')
+  const reachSurface = useColorModeValue('rgba(238,228,219,0.6)', 'rgba(35,24,22,0.85)')
+  const reachCardBg = useColorModeValue('rgba(255, 250, 246, 0.78)', 'rgba(27, 18, 16, 0.9)')
+  const reachCardBorder = useColorModeValue('rgba(206,156,144,0.3)', 'rgba(166,119,106,0.35)')
+  const reachIconBg = useColorModeValue('rgba(214,173,160,0.25)', 'rgba(166,119,106,0.35)')
+  const reachAccentText = useColorModeValue('#2D2422', '#F9F5F2')
+  const reachCardShadow = useColorModeValue('0 18px 45px rgba(166,119,106,0.16)', '0 18px 30px rgba(0,0,0,0.55)')
 
-  const brands = ['Instagram', 'TikTok', 'YouTube', 'Monos', 'Samsung', 'Voluspa']
+  const partners = [
+    { src: bubbleLaundryLogo, alt: 'Bubble Laundry' },
+    { src: landimFolheadosLogo, alt: 'Landim Folheados' },
+    { src: narcisoEnxovaisLogo, alt: 'Narciso Enxovais' },
+    { src: oticasDinizLogo, alt: 'Óticas Diniz' },
+  ]
   const heroImages = [
     {
       src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80',
@@ -38,6 +52,26 @@ export default function Home() {
     {
       src: 'https://images.unsplash.com/photo-1545239351-ef35f43d514b?auto=format&fit=crop&w=800&q=80',
       alt: 'Making of de sessão fotográfica',
+    },
+  ]
+  const reachStats = [
+    {
+      icon: FiUsers,
+      value: '88%',
+      title: 'Confiança orgânica',
+      description: 'das pessoas confiam em indicações de quem conhecem.',
+    },
+    {
+      icon: FiDollarSign,
+      value: '5,7x',
+      title: 'Retorno por investimento',
+      description: 'cada R$1 investido em influência gera até R$5,78 em retorno.',
+    },
+    {
+      icon: FiTrendingUp,
+      value: '73%',
+      title: 'Decisão de compra',
+      description: 'relatam se sentir mais confiantes após ver conteúdo autoral.',
     },
   ]
 
@@ -61,15 +95,15 @@ export default function Home() {
           >
             Raíssa Albuquerque
           </Heading>
-          <Text fontSize={{ base: 'lg', md: 'xl' }} color={accent} fontStyle="italic">
+          <Text textStyle="subtitle" color={accent}>
             A blogueira de milhões 👑
           </Text>
-          <VStack align="flex-start" spacing={2} color={secondaryText} fontSize="lg" maxW="2xl">
-            <Text>
+          <VStack align="flex-start" spacing={2} color={secondaryText} maxW="2xl">
+            <Text textStyle="body">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula vitae
               felis interdum feugiat a eget metus.
             </Text>
-            <Text>
+            <Text textStyle="body">
               Integer malesuada, neque sed fringilla ultricies, felis massa volutpat nibh, ut
               imperdiet justo mi at dolor.
             </Text>
@@ -117,30 +151,101 @@ export default function Home() {
           </Grid>
 
           <VStack align="flex-start" spacing={3}>
-            <Text fontWeight="semibold" color={secondaryText} textTransform="uppercase" fontSize="sm">
+            <Text textStyle="eyebrow" color={secondaryText}>
               Marcas parceiras
             </Text>
-            <Wrap spacing={3} shouldWrapChildren>
-              {brands.map((brand) => (
-                <Box
-                  key={brand}
-                  px={4}
-                  py={2}
-                  borderRadius="full"
-                  bg={brandChipBg}
-                  borderWidth="1px"
-                  borderColor={brandChipBorder}
-                  color={primaryText}
-                  fontWeight="medium"
-                  fontSize="sm"
-                >
-                  {brand}
+            <Wrap spacing={{ base: 6, md: 10 }} align="center">
+              {partners.map(({ src, alt }) => (
+                <Box key={alt} display="flex" alignItems="center" justifyContent="center">
+                  <Image
+                    src={src}
+                    alt={alt}
+                    maxH={{ base: '28px', md: '68px' }}
+                    objectFit="contain"
+                    filter="grayscale(100%) opacity(0.65)"
+                    transition="all 0.2s ease"
+                    _hover={{ filter: 'grayscale(0%) opacity(1)', transform: 'translateY(-2px)' }}
+                    borderRadius="full"
+                  />
                 </Box>
               ))}
             </Wrap>
           </VStack>
         </Flex>
       </SimpleGrid>
+
+      <Box
+        as="section"
+        id="alcance"
+        w="100vw"
+        position="relative"
+        left="50%"
+        right="50%"
+        ml="-50vw"
+        mr="-50vw"
+        bg={reachSurface}
+        py={{ base: 10, md: 14 }}
+        boxShadow={useColorModeValue('0 24px 70px rgba(166,119,106,0.18)', '0 20px 55px rgba(0,0,0,0.6)')}
+      >
+        <Stack
+          spacing={{ base: 8, md: 10 }}
+          align="center"
+          textAlign="center"
+          maxW="6xl"
+          mx="auto"
+          px={{ base: 6, md: 10 }}
+        >
+          <Box maxW="3xl">
+            <Heading
+              fontSize={{ base: '2xl', md: '3xl' }}
+              color={reachAccentText}
+              lineHeight={{ base: 1.2, md: 1.25 }}
+              fontWeight="extrabold"
+            >
+              O futuro da confiança entre marcas e audiência é construído com autenticidade
+            </Heading>
+            <Text mt={3} color={secondaryText} textStyle="body">
+              Métricas reais de campanhas recentes comprovam como presença digital humanizada
+              acelera decisões de compra e fortalece a lembrança de marca.
+            </Text>
+          </Box>
+
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }} w="full">
+            {reachStats.map((stat) => (
+              <VStack
+                key={stat.title}
+                spacing={4}
+                bg={reachCardBg}
+                borderRadius="2xl"
+                borderWidth="1px"
+                borderColor={reachCardBorder}
+                p={{ base: 6, md: 8 }}
+                boxShadow={reachCardShadow}
+              >
+                <Box
+                  bg={reachIconBg}
+                  borderRadius="xl"
+                  p={3}
+                  display="inline-flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Icon as={stat.icon} boxSize={7} color={accent} />
+                </Box>
+                <Heading fontSize={{ base: '3xl', md: '4xl' }} color={reachAccentText}>
+                  {stat.value}
+                </Heading>
+                <Text textStyle="eyebrow" color={accent}>
+                  {stat.title}
+                </Text>
+                <Text color={secondaryText} fontSize="sm" maxW="sm">
+                  {stat.description}
+                </Text>
+              </VStack>
+            ))}
+          </SimpleGrid>
+        </Stack>
+      </Box>
 
       <Box as="section" id="sobre" pt={4}>
         <Heading mb={2}>Sobre</Heading>
