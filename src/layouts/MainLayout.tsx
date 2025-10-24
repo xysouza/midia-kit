@@ -1,18 +1,18 @@
-import { Container, Box } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import type { PropsWithChildren } from 'react'
 import { Nav } from '../components'
 import { Footer } from '../components/Footer'
 
 export function MainLayout({ children }: PropsWithChildren) {
   return (
-  <Box minH="100vh" display="flex" flexDirection="column">
+    <Box minH="100vh" display="flex" flexDirection="column">
       {/* New sticky navigation */}
       <Nav />
       {/* Keep the previous header utilities if needed below nav (e.g., theme toggle) */}
       {/* <Header /> */}
-      <Container maxW="6xl" flex="1 1 auto" py={8}>
+  <Box flex="1 1 auto" w="full" pt={0} pb={8}>
         {children}
-      </Container>
+      </Box>
       <Footer />
     </Box>
   )

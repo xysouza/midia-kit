@@ -113,7 +113,7 @@ const Nav = () => {
   const textMuted = useColorModeValue('rgba(0,0,0,0.72)', 'rgba(255,255,255,0.82)');
   const navBg = useColorModeValue('rgba(238, 228, 219, 0.7)', 'rgba(28, 20, 18, 0.8)');
   const borderColor = useColorModeValue('rgba(0,0,0,0.08)', 'rgba(255,255,255,0.08)');
-  const hoverBg = useColorModeValue('rgba(166, 119, 106, 0.10)', 'rgba(206, 156, 144, 0.10)');
+  const hoverBg = useColorModeValue('rgba(166, 119, 106, 0.08)', 'rgba(206, 156, 144, 0.16)');
   const drawerBg = useColorModeValue('rgba(243, 233, 222, 0.96)', 'rgba(16, 12, 11, 0.95)');
   const drawerBgGradient = useColorModeValue(
     'linear-gradient(180deg, rgba(230, 208, 202, 0.9) 0%, rgba(238, 228, 219, 0.95) 40%, rgba(238, 228, 219, 0.92) 100%)',
@@ -130,6 +130,10 @@ const Nav = () => {
   const drawerLinkColor = useColorModeValue('#2D2422', 'whiteAlpha.900');
   const drawerLinkBg = useColorModeValue('rgba(230, 208, 202, 0.6)', 'rgba(40, 24, 22, 0.82)');
   const drawerLinkHoverBorder = useColorModeValue('rgba(166,119,106,0.35)', 'rgba(206,156,144,0.35)');
+  const linkHoverShadow = useColorModeValue('0 6px 18px rgba(166,119,106,0.18)', '0 6px 20px rgba(206,156,144,0.22)');
+  const linkActiveBg = useColorModeValue('rgba(166,119,106,0.18)', 'rgba(206,156,144,0.24)');
+  const linkActiveShadow = useColorModeValue('0 4px 16px rgba(166,119,106,0.18)', '0 4px 16px rgba(206,156,144,0.26)');
+  const linkFocusBorder = useColorModeValue('rgba(166,119,106,0.45)', 'rgba(206,156,144,0.45)');
 
   const linkStyles = {
     position: 'relative',
@@ -149,7 +153,16 @@ const Nav = () => {
       color: accent,
       textDecoration: 'none',
       bg: hoverBg,
-      boxShadow: useColorModeValue('0 8px 20px rgba(166,119,106,0.15)', '0 8px 20px rgba(206,156,144,0.15)'),
+      boxShadow: linkHoverShadow,
+    },
+    _active: {
+      bg: linkActiveBg,
+      color: accent,
+      boxShadow: linkActiveShadow,
+    },
+    _focusVisible: {
+      outline: 'none',
+      boxShadow: `0 0 0 2px ${linkFocusBorder}`,
     },
   } as const;
 
@@ -165,7 +178,7 @@ const Nav = () => {
       top="0"
       zIndex="banner"
       backdropFilter="blur(18px) saturate(160%)"
-    bg={navBgWithScroll}
+      bg={navBgWithScroll}
       borderBottom={`1px solid ${borderColor}`}
       boxShadow={shadow}
       transition="background-color .35s ease, box-shadow .35s ease, border-color .35s ease"
