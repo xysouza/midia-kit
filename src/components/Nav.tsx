@@ -103,9 +103,11 @@ const Nav = () => {
   }, []);
 
   const links = [
-    { label: 'Sobre', href: '#sobre' },
-    { label: 'Projetos', href: '#projetos' },
-    { label: 'Contato', href: '#contato' },
+    { label: 'Início', href: '#destaque' },
+    { label: 'Alcance', href: '#alcance' },
+    { label: 'Público', href: '#publico' },
+    { label: 'Valores', href: '#valores' },
+    { label: 'Pacotes', href: '#pacotes' },
   ];
 
   // Palette mapping

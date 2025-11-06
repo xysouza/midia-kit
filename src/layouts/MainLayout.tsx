@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import type { PropsWithChildren } from 'react'
 import { Nav } from '../components'
-import { Footer } from '../components/Footer'
 
 export function MainLayout({ children }: PropsWithChildren) {
   return (
@@ -10,10 +9,9 @@ export function MainLayout({ children }: PropsWithChildren) {
       <Nav />
       {/* Keep the previous header utilities if needed below nav (e.g., theme toggle) */}
       {/* <Header /> */}
-  <Box flex="1 1 auto" w="full" pt={0} pb={8}>
+      <Box flex="1 1 auto" w="full" pt={0} pb={8}>
         {children}
       </Box>
-      <Footer />
     </Box>
   )
 }

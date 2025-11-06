@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Stack, VStack, Icon, useColorModeValue, Wrap, IconButton, Link } from '@chakra-ui/react'
+import { Box, Heading, Text, VStack, Icon, useColorModeValue, Wrap, IconButton, Link } from '@chakra-ui/react'
 import { FiMail, FiInstagram, FiLinkedin } from 'react-icons/fi'
 
 const SOCIAL_LINKS = [
@@ -77,7 +77,7 @@ export default function Footer({
         </Wrap>
 
         <Text color={secondaryText} fontSize="sm">
-          &copy; {new Date().getFullYear()} Seu Nome. Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} Adriano Oliveira. Todos os direitos reservados.
         </Text>
       </VStack>
     </Box>

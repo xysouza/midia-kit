@@ -1,3 +1,3 @@
 export * from './Header'
-export * from './Footer'
+export * from './sections/Footer'
 export { default as Nav } from './Nav'
