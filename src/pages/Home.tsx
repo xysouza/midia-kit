@@ -12,7 +12,6 @@ import {
   Grid,
   Flex,
   Icon,
-  type BoxProps,
 } from '@chakra-ui/react'
 import { FaInstagram } from 'react-icons/fa'
 import bubbleLaundryLogo from '../assets/img/bubble_laundry.jpg'
@@ -25,13 +24,6 @@ import Publico from '../components/sections/Publico'
 import Valores from '../components/sections/Valores'
 import Pacotes from '../components/sections/Pacotes'
 import Footer from '../components/sections/Footer'
-
-type ContentSection = {
-  id: string
-  title: string
-  description: string
-  boxProps?: BoxProps
-}
 
 const PARTNERS = [
   { src: bubbleLaundryLogo, alt: 'Bubble Laundry' },
@@ -52,27 +44,6 @@ const HERO_IMAGES = [
   {
     src: 'https://images.unsplash.com/photo-1545239351-ef35f43d514b?auto=format&fit=crop&w=800&q=80',
     alt: 'Making of de sessão fotográfica',
-  },
-]
-
-const CONTENT_SECTIONS: ContentSection[] = [
-  {
-    id: 'sobre',
-    title: 'Sobre',
-    description: 'Esta é a seção "Sobre". Substitua por seu conteúdo real sobre você ou o projeto.',
-    boxProps: { pt: 4 },
-  },
-  {
-    id: 'projetos',
-    title: 'Projetos',
-    description: 'Aqui você pode listar seus projetos, estudos de caso ou trabalhos recentes.',
-  },
-  {
-    id: 'contato',
-    title: 'Contato',
-    description:
-      'Deixe informações de contato ou um formulário. O botão do WhatsApp na navegação também está disponível.',
-    boxProps: { pb: 8 },
   },
 ]
 
@@ -235,42 +206,42 @@ export default function Home() {
           reachCardShadow={reachCardShadow}
         />
 
-        {CONTENT_SECTIONS.map(({ id, title, description, boxProps }) => (
-          <Box
-            as="section"
-            key={id}
-            id={id}
-            mt={{ base: 12, md: 16 }}
-            maxW={{ base: 'full', xl: '7xl' }}
-            mx="auto"
-            px={{ base: 4, md: 8 }}
-            {...boxProps}
-          >
-            <Stack
-              spacing={3}
-              bg={mutedSurface}
-              borderRadius="2xl"
-              borderWidth="1px"
-              borderColor={mutedBorder}
-              boxShadow={mutedShadow}
-              px={{ base: 5, md: 8 }}
-              py={{ base: 6, md: 8 }}
-            >
-              <Heading fontSize={{ base: '2xl', md: '3xl' }} color={primaryText}>
-                {title}
-              </Heading>
-              <Text color={secondaryText} maxW="3xl">
-                {description}
-              </Text>
-            </Stack>
-          </Box>
-        ))}
+        <Publico
+          accent={accent}
+          primaryText={primaryText}
+          secondaryText={secondaryText}
+          mutedSurface={mutedSurface}
+          mutedBorder={mutedBorder}
+          mutedShadow={mutedShadow}
+        />
+
+        <Valores
+          accent={accent}
+          primaryText={primaryText}
+          secondaryText={secondaryText}
+          mutedSurface={mutedSurface}
+          mutedBorder={mutedBorder}
+          mutedShadow={mutedShadow}
+        />
+
+        <Pacotes
+          accent={accent}
+          primaryText={primaryText}
+          secondaryText={secondaryText}
+          primaryButtonText={primaryButtonText}
+          primaryButtonShadow={primaryButtonShadow}
+          mutedSurface={mutedSurface}
+          mutedBorder={mutedBorder}
+          mutedShadow={mutedShadow}
+        />
       </Stack>
 
-      <Publico />
-      <Valores />
-      <Pacotes />
-      <Footer />
+      <Footer
+        accent={accent}
+        primaryText={primaryText}
+        secondaryText={secondaryText}
+        reachBgGradient={reachBgGradient}
+      />
     </Box>
   )
 }
